@@ -2,7 +2,7 @@ import { Client } from "../../domain/models/clients";
 import { ClientFactory } from "../../domain/factories/clients.factory";
 import { ClientsRepository } from "../../domain/repositories/clients.repository";
 import { ClientEntity } from "../entities/clientes.entity";
-import { AppDataSource } from "../../../../database/db";
+import { AppDataSource } from "../../../../config/database/db";
 import { ClientException } from "../../domain/exceptions/client.exception";
 
 
