@@ -8,7 +8,11 @@ import { Client } from '../../../domain/models/clients';
 export const getClients = async (req: Request, res: Response) => {
   try {
     const data = await clientUseCase.getClients(req.query);
-    return res.json({ ok: true, data });
+    const clients = data.map((client) => ({
+      idClientes: client.getIdClient,
+      nombreCliente: client.getNameClient,
+    }));
+    return res.json({ ok: true, data: clients });
   } catch (err) {
     return res.json({ ok: false, message: err });
   }
@@ -16,7 +20,7 @@ export const getClients = async (req: Request, res: Response) => {
 
 export const getClientByPk = async (req: Request, res: Response) => {
   try {
-    const idCliente = req.params.idCliente as unknown as number;
+    const idCliente = parseInt(req.params.idCliente);
     const data = await clientUseCase.getClientByPk(idCliente);
     return res.json({ ok: true, data });
   } catch (err) {

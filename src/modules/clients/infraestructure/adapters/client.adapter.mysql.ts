@@ -11,24 +11,26 @@ export class ClientAdapterMySql implements ClientsRepository {
 
     async getClients(params: any): Promise<any> {
         const clientRepository = AppDataSource.getRepository(ClientEntity);
-        const clientsEntities = await clientRepository.findAndCount();
+        const clientsEntities = await clientRepository.find();
+        console.log(clientsEntities)
         let clients: Client[] = [];
         clientsEntities.forEach(clientEntity => {
             clients.push(ClientFactory.jsonToModel(clientEntity));
         });
+        console.log(clients)
         return clients;
     }
     
-
     async getClientByPk(idCliente: number): Promise<any> {
         const clientRepository = AppDataSource.getRepository(ClientEntity);
-        const clientEntity = await clientRepository.findOne({where:{idClientes:idCliente}});
-        if(!clientEntity){
-            throw new ClientException("No se encontró el cliente");
+        const clientEntity = await clientRepository.findOne({
+          where: { idClientes: idCliente }
+        });
+        if (!clientEntity) {
+          throw new ClientException("No se encontró el cliente");
         }
-        return ClientFactory.jsonToModel(clientEntity)
-        
-    }
+        return ClientFactory.jsonToModel(clientEntity);
+      }
 
     async createClient(client: Client): Promise<Client> {
         try {

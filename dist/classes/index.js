@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 const app_1 = __importDefault(require("../app"));
-const db_1 = require("../database/db");
+const db_1 = require("../config/database/db");
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {

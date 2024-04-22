@@ -13,8 +13,8 @@ export class ClientUseCase {
     return clients;
   }
 
-  async getClientByPk(idCliente: number): Promise<Client> {
-    const client: Client = await this.clientsRepository.getClientByPk(idCliente);
+  async getClientByPk(idClientes: number): Promise<Client> {
+    const client = await this.clientsRepository.getClientByPk(idClientes);
     return client;
   }
 

@@ -1,16 +1,16 @@
 export class Client{
 
 
-    private idCliente: number | undefined
+    private idClientes: number | undefined
     private nombreCliente: string | undefined
 
 
     
     public get getIdClient(): number | undefined {
-        return this.idCliente
+        return this.idClientes
     }
-    public set setIdClient( idCliente: number | undefined ){
-         this.idCliente = idCliente;
+    public set setIdClient( idClientes: number | undefined ){
+         this.idClientes = idClientes;
     }
 
 

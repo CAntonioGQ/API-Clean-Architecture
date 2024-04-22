@@ -2,8 +2,8 @@ import { Client } from "../models/clients";
 
 export class ClientFactory {
   static populate(client: Client, fields: any) {
-    if (fields.idCliente) {
-      client.setIdClient = fields.idCliente;
+    if (fields.idClientes) {
+      client.setIdClient = fields.idClientes;
     } else {
       client.setIdClient = undefined;
     }
@@ -18,8 +18,8 @@ export class ClientFactory {
   static jsonToModel(fields: any) {
     let client = new Client();
     
-    if (fields.idCliente) {
-      client.setIdClient = fields.idCliente;
+    if (fields.idClientes) {
+      client.setIdClient = fields.idClientes;
     } else {
       client.setIdClient = undefined;
     }
@@ -35,7 +35,7 @@ export class ClientFactory {
   
   static toJson(client: Client): any {
     return {
-      idCliente: client.getIdClient,
+      idClientes: client.getIdClient,
       nombreCliente: client.getNameClient
     };
   }

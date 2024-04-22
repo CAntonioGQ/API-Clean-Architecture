@@ -1,22 +1,20 @@
-import { Column, PrimaryColumn, Entity, OneToOne, PrimaryGeneratedColumn, CreateDateColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Prestamos } from "../../../loans/intraestructure/entities/prestamos.entity";
-
 
 @Entity({name: 'clientes'})
 export class ClientEntity {
+  @PrimaryGeneratedColumn({name: 'idClientes', type: 'int'})
+  idClientes: number;
 
-    @PrimaryGeneratedColumn({name: 'idClientes', type: 'int'})
-    idClientes: number
+  @Column({name: 'nombreCliente', type: 'varchar', length: 255})
+  nombreCliente: string;
 
-    @Column({name: 'nombreCliente', type: 'varchar'})
-    nombreCliente: string
+  @Column({name: 'createdAt', type: 'timestamp'})
+  createdAt: Date;
 
-    @CreateDateColumn({name: 'createdAt', type: 'timestamp'})
-    createdAt: Date
+  @Column({name: 'updatedAt', type: 'timestamp'})
+  updatedAt: Date;
 
-    @CreateDateColumn({name: 'updatedAt', type: 'timestamp'})
-    updatedAt: Date
-    
-    @OneToOne(() => Prestamos, prestamo => prestamo.cliente)
-    prestamo: Prestamos;
+  @OneToMany(() => Prestamos, prestamo => prestamo.id_clientes)
+  prestamos: Prestamos[];
 }

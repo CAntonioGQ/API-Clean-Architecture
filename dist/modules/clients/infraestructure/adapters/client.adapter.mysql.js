@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClientAdapterMySql = void 0;
 const clients_factory_1 = require("../../domain/factories/clients.factory");
 const clientes_entity_1 = require("../entities/clientes.entity");
-const db_1 = require("../../../../database/db");
+const db_1 = require("../../../../config/database/db");
 const client_exception_1 = require("../../domain/exceptions/client.exception");
 class ClientAdapterMySql {
     getClients(params) {

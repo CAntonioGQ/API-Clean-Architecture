@@ -1,31 +1,24 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-require("reflect-metadata");
-const app_1 = __importDefault(require("./app"));
-const db_1 = require("./database/db");
-function main() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            yield db_1.AppDataSource.initialize();
-            console.log('Database Connected');
-            app_1.default.listen(8000);
-            console.log('Server is listening on PORT', 8000);
-        }
-        catch (error) {
-            console.error(error);
-        }
-    });
-}
-main();
+const cors_1 = __importDefault(require("cors"));
+const server_1 = require("./classes/server");
+const express_1 = __importDefault(require("express"));
+const path_1 = __importDefault(require("path"));
+const routing_credit_middleware_1 = require("./modules/clients/infraestructure/rest/middlewares/routing-credit.middleware");
+const server = new server_1.ServerExpress();
+server.app.use((0, cors_1.default)());
+// Configurar el directorio público
+server.app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
+// Configurar el middleware para parsear el body de las solicitudes
+server.app.use(express_1.default.json());
+server.app.use(express_1.default.urlencoded({ extended: true }));
+// Configurar las rutas de los clientes
+const routingCredit = new routing_credit_middleware_1.RoutingClient();
+routingCredit.run(server);
+// Iniciar el servidor
+server.startServer(() => {
+    console.log(`Servidor corriendo en el puerto ${server.port}`);
+});

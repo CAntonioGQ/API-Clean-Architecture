@@ -20,21 +20,21 @@ __decorate([
     __metadata("design:type", Number)
 ], ClientEntity.prototype, "idClientes", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'nombreCliente', type: 'varchar' }),
+    (0, typeorm_1.Column)({ name: 'nombreCliente', type: 'varchar', length: 255 }),
     __metadata("design:type", String)
 ], ClientEntity.prototype, "nombreCliente", void 0);
 __decorate([
-    (0, typeorm_1.CreateDateColumn)({ name: 'createdAt', type: 'timestamp' }),
+    (0, typeorm_1.Column)({ name: 'createdAt', type: 'timestamp' }),
     __metadata("design:type", Date)
 ], ClientEntity.prototype, "createdAt", void 0);
 __decorate([
-    (0, typeorm_1.CreateDateColumn)({ name: 'updatedAt', type: 'timestamp' }),
+    (0, typeorm_1.Column)({ name: 'updatedAt', type: 'timestamp' }),
     __metadata("design:type", Date)
 ], ClientEntity.prototype, "updatedAt", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => prestamos_entity_1.Prestamos, prestamo => prestamo.cliente),
-    __metadata("design:type", prestamos_entity_1.Prestamos)
-], ClientEntity.prototype, "prestamo", void 0);
+    (0, typeorm_1.OneToMany)(() => prestamos_entity_1.Prestamos, prestamo => prestamo.id_clientes),
+    __metadata("design:type", Array)
+], ClientEntity.prototype, "prestamos", void 0);
 exports.ClientEntity = ClientEntity = __decorate([
     (0, typeorm_1.Entity)({ name: 'clientes' })
 ], ClientEntity);

@@ -15,11 +15,11 @@ export const AppDataSource = new DataSource({
     synchronize: false,
     logging: true,
     entities: [
-        ClientEntity,
-        Plazos,
-        Prestamos,
-        Montos,
-        //join(__dirname, "/../../modules/**/*.entity.{js,ts}")
+         ClientEntity,
+        // Plazos,
+        // Prestamos,
+        // Montos,
+        join(__dirname, "/../../modules/**/*.entity.{js,ts}")
     ],
     subscribers: [],
     migrations: [],
