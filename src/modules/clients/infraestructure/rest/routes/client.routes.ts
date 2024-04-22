@@ -7,8 +7,8 @@ export class ClientRoutes {
     clientRoutes.get('/', getClients);
     clientRoutes.get('/:idCliente', getClientByPk);
     clientRoutes.post('/', createClient);
-    clientRoutes.put('/:idClientes', updateClient);
-    clientRoutes.delete('/:idClientes', deleteClient);
+    clientRoutes.put('/:idCliente', updateClient);
+    clientRoutes.delete('/:idCliente', deleteClient);
     return clientRoutes;
   }
 }

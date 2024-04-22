@@ -41,9 +41,10 @@ export const createClient = async (req: Request, res: Response) => {
 
 export const updateClient = async (req: Request, res: Response) => {
   try {
+    const idCliente = parseInt(req.params.idCliente); // Convertir a número
     const client = new Client();
     ClientFactory.populate(client, req.body);
-    const clientUpdated = await clientUseCase.updateClient(client.getIdClient!, client);
+    const clientUpdated = await clientUseCase.updateClient(idCliente, client);
     return res.json({ ok: true, data: clientUpdated });
   } catch (err) {
     return res.json({ ok: false, message: err });

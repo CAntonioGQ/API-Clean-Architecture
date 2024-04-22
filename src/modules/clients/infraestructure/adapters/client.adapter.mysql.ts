@@ -47,11 +47,18 @@ export class ClientAdapterMySql implements ClientsRepository {
 
     async updateClient(idCliente: number, client: Client): Promise<any> {
         const clientsRepository = AppDataSource.getRepository(ClientEntity);
-        const clientEntityUpdated = await clientsRepository.save(ClientFactory.toJson(client));
-
-        return ClientFactory.jsonToModel(clientEntityUpdated);
         
-    }
+        const existingClient = await clientsRepository.findOne({
+          where: { idClientes: idCliente }
+        });
+      
+        if (!existingClient) {
+          throw new ClientException("No se encontró el cliente");
+        } 
+        existingClient.nombreCliente = client.getNameClient || existingClient.nombreCliente;
+        const clientEntityUpdated = await clientsRepository.save(existingClient);
+        return ClientFactory.jsonToModel(clientEntityUpdated);
+      }
 
     async deleteClient(idCliente: number): Promise<void> {
         try {
