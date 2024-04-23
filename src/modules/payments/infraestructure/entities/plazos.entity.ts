@@ -2,14 +2,14 @@ import { Column, PrimaryColumn, Entity, OneToOne, PrimaryGeneratedColumn, Create
 import { Prestamos } from "../../../loans/intraestructure/entities/prestamos.entity";
 
 
-@Entity()
+@Entity({name: 'plazos'})
 export class PaymentEntity {
 
     @PrimaryGeneratedColumn({name: 'idPlazos', type: 'int'})
     idPlazos: number
 
-    @Column({name: 'plazos', type: 'varchar'})
-    plazos: string
+    @Column({name: 'plazos', type: 'int'})
+    plazos: number
 
     @CreateDateColumn({name: 'createdAt', type: 'timestamp'})
     createdAt: Date

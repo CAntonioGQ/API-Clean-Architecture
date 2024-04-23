@@ -5,6 +5,7 @@ import { PaymentEntity } from "../../modules/payments/infraestructure/entities/p
 import { Prestamos } from "../../modules/loans/intraestructure/entities/prestamos.entity"
 import { AmountEntity } from "../../modules/amounts/infraestructure/entities/montos.entity"
 import { Amount } from "../../modules/amounts/domain/models/amounts"
+import { Payment } from "../../modules/payments/domain/models/payments"
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -18,6 +19,7 @@ export const AppDataSource = new DataSource({
     entities: [
          ClientEntity,
          AmountEntity,
+         PaymentEntity,
         // Plazos,
         // Prestamos,
         // Montos,

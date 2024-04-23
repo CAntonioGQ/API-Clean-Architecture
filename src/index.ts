@@ -6,6 +6,7 @@ import { RoutingModule } from './config/middlewares/routing-module.middleware';
 import { RoutingClient } from './modules/clients/infraestructure/rest/middlewares/routing-client.middleware';
 import { AppDataSource } from './config/database/db';
 import { RoutingAmount } from './modules/amounts/infraestructure/rest/middlewares/routing-amount.middleware';
+import { RoutingPayment } from './modules/payments/infraestructure/rest/middlewares/routing-payment.middleware';
 
 const server = new ServerExpress();
 server.app.use(cors());
@@ -19,6 +20,9 @@ routingCredit.run(server);
 
 const routingAmount = new RoutingAmount();
 routingAmount.run(server);
+
+const routingPayment = new RoutingPayment();
+routingPayment.run(server);
 
 
  server.startServer(async () => {
