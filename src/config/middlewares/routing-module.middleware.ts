@@ -1,4 +1,4 @@
-import { RoutingClient } from "../../modules/clients/infraestructure/rest/middlewares/routing-credit.middleware";
+import { RoutingClient } from "../../modules/clients/infraestructure/rest/middlewares/routing-client.middleware";
 
 export class RoutingModule {
   run(server: any) {
