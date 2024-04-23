@@ -12,7 +12,7 @@ export class ClientAdapterMySql implements ClientsRepository {
     async getClients(params: any): Promise<any> {
         const clientRepository = AppDataSource.getRepository(ClientEntity);
         const clientsEntities = await clientRepository.find();
-        console.log(clientsEntities)
+        console.log((clientRepository))
         let clients: Client[] = [];
         clientsEntities.forEach(clientEntity => {
             clients.push(ClientFactory.jsonToModel(clientEntity));
