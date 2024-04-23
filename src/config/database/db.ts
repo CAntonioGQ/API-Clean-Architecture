@@ -1,9 +1,10 @@
 import { DataSource } from "typeorm"
 import { join } from "path"
 import { ClientEntity } from "../../modules/clients/infraestructure/entities/clientes.entity"
-import { Plazos } from "../../modules/payments/infraestructure/entities/plazos.entity"
+import { PaymentEntity } from "../../modules/payments/infraestructure/entities/plazos.entity"
 import { Prestamos } from "../../modules/loans/intraestructure/entities/prestamos.entity"
-import { Montos } from "../../modules/amounts/infraestructure/entities/montos.entity"
+import { AmountEntity } from "../../modules/amounts/infraestructure/entities/montos.entity"
+import { Amount } from "../../modules/amounts/domain/models/amounts"
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -16,6 +17,7 @@ export const AppDataSource = new DataSource({
     logging: true,
     entities: [
          ClientEntity,
+         AmountEntity,
         // Plazos,
         // Prestamos,
         // Montos,

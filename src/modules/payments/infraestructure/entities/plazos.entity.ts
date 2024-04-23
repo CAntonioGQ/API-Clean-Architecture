@@ -3,7 +3,7 @@ import { Prestamos } from "../../../loans/intraestructure/entities/prestamos.ent
 
 
 @Entity()
-export class Plazos {
+export class PaymentEntity {
 
     @PrimaryGeneratedColumn({name: 'idPlazos', type: 'int'})
     idPlazos: number
@@ -17,7 +17,7 @@ export class Plazos {
     @CreateDateColumn({name: 'updatedAt', type: 'timestamp'})
     updatedAt: Date
 
-    @OneToOne(() => Prestamos, prestamo => prestamo.plazo)
+    @OneToOne(() => Prestamos, prestamo => prestamo.id_plazos)
     prestamo: Prestamos;
 }
 

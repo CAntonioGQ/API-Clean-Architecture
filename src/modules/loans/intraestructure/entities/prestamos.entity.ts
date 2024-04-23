@@ -1,7 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { ClientEntity } from "../../../clients/infraestructure/entities/clientes.entity"; 
-import { Montos } from "../../../amounts/infraestructure/entities/montos.entity";
-import { Plazos } from "../../../payments/infraestructure/entities/plazos.entity";
+import { AmountEntity } from "../../../amounts/infraestructure/entities/montos.entity";
+import { PaymentEntity } from "../../../payments/infraestructure/entities/plazos.entity";
 
 @Entity()
 export class Prestamos {
@@ -12,13 +12,13 @@ export class Prestamos {
   @JoinColumn({ name: 'id_clientes' })
   id_clientes: ClientEntity;
 
-  @ManyToOne(() => Montos, monto => monto.idMontos)
+  @ManyToOne(() => AmountEntity, monto => monto.idMontos)
   @JoinColumn({ name: 'id_montos' })
-  monto: Montos;
+  id_montos: AmountEntity;
 
-  @ManyToOne(() => Plazos, plazo => plazo.idPlazos)
+  @ManyToOne(() => PaymentEntity, plazo => plazo.idPlazos)
   @JoinColumn({ name: 'id_plazos' })
-  plazo: Plazos;
+  id_plazos: PaymentEntity;
 
   @Column({name: 'createdAt', type: 'timestamp'})
   createdAt: Date;
