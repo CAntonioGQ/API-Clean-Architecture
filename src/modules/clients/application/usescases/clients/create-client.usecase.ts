@@ -13,5 +13,4 @@ export class CreateClientUseCase implements UseCase<Client>{
         const clientCreated: Client = await this.clientsRepository.createClient(client)
         return clientCreated;
       }
-    
 }

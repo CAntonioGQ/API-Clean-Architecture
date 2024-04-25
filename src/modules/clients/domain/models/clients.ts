@@ -3,8 +3,6 @@ export class Client{
 
     private idClientes: number | undefined
     private nombreCliente: string | undefined
-
-
     
     public get getIdClient(): number | undefined {
         return this.idClientes
@@ -20,5 +18,4 @@ export class Client{
     public set setNameClient(nombreCliente: string | undefined){
          this.nombreCliente = nombreCliente
     }
-
 }
